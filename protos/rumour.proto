@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package rumour;
+
+service Rumour {
+  rpc sendRumourData (MyDataRequest) returns (MyDataReply) {};
+  rpc receiveRumourData (RumourDataRequest) returns (RumourDataReply) {};
+  rpc receiveMemoryRequest (MemoryDataRequest) returns (MemoryDataReply) {};
+  rpc sendMemoryData (MemoryDataRequest) returns (MemoryStatsReply) {};
+  rpc sendheartbeat (HeartBeatRequest) returns (HeartBeatReply) {};
+  rpc receiveheartbeat (HeartBeatReply) returns (HeartBeatRequest) {};
+  rpc sendLogicalMesh (LogicalMeshRequest) returns (LogicalMeshReply) {};
+}
+message LogicalMeshRequest{
+  
+}
+message LogicalMeshReply{
+    string wholemesh = 1;
+}
+message HeartBeatRequest{
+    string ip = 1;
+    string pos = 2;
+    int32 heartbeatcount = 3;
+    string wholemesh = 4;
+    string heartbeatdict = 5;
+}
+message HeartBeatReply{
+
+}
+message MyDataRequest {
+    string victim_ip = 1;
+    string victim_pos = 2;
+    string action = 3;
+    string ishole = 4;
+    string wholemesh = 5;
+    string count = 6;
+}
+
+message MemoryDataRequest{
+
+}
+message MemoryStatsReply{
+    float cpu_usage = 1;
+  int64 memory_usage = 2;
+  int64 disk_usage = 3;
+}
+message MemoryStatsRequest{
+
+}
+message MemoryDataReply{
+    string request = 1;
+}
+
+message RumourDataRequest {
+
+}
+message RumourDataReply{
+    string victim_ip = 1;
+    string victim_pos = 2;
+    string action = 3;
+    string ishole = 4;
+    string wholemesh = 5;
+    string count = 6;
+}
+message MyDataReply {
+}

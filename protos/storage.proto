@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+service FileServer {
+  rpc upload_chunk_stream(stream ChunkRequest) returns (ResponseBoolean) {}
+  rpc upload_single_chunk(ChunkRequest) returns (ResponseBoolean) {}
+  rpc download_chunk_stream(HashIdRequest) returns (stream ChunkRequest) {}
+  rpc get_node_available_memory_bytes(EmptyRequest) returns (ResponseDouble) {}
+  rpc get_stored_hashes_list_iterator(EmptyRequest) returns (stream ResponseString) {}
+  rpc is_hash_id_in_memory(HashIdRequest) returns (ResponseBoolean) {}
+}
+
+message ChunkRequest {
+  bytes chunk = 1;
+}
+
+message HashIdRequest {
+  string hash_id = 1;
+}
+
+message ResponseBoolean {
+  bool success = 1;
+}
+
+message ResponseDouble {
+  double bytes = 1;
+}
+
+message EmptyRequest {}
+
+message ResponseString {
+  string hash_id = 1;
+}
+

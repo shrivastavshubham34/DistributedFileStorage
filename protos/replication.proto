@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service Fileservice { rpc ReplicateFile(FileData) returns (ack); }
+
+message FileData {
+  string initialReplicaServer = 1;
+  bytes bytearray = 2;
+  string vClock = 3;
+  repeated string shortest_path = 4;
+  int32 currentpos = 5;
+}
+
+message ack {
+  bool success = 1;
+  string message = 2;
+}
+
+message FileMetaData {
+  string key_hash_id = 1;
+  string key_chunk_size = 2;
+  string key_number_of_chunks = 3;
+  bool key_is_replica = 4;
+}

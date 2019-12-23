@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package traversal;
+
+service Traversal {
+    rpc ReceiveData (ReceiveDataRequest) returns (stream ReceiveDataResponse);
+    rpc RespondData (ResponseDataRequest) returns (ResponseDataResponse);
+    rpc SendData (stream SendDataRequest) returns (SendDataResponse);
+}
+
+message ReceiveDataRequest {
+    string hash_id = 1;
+    string request_id = 2;
+    string stack = 3;
+    string visited = 4;
+    string requesting_node_ip = 5;
+}
+
+message ReceiveDataResponse {
+    enum TraversalResponseStatus {
+        FOUND = 0;
+        FORWARDED = 1;
+        NOT_FOUND = 2;
+    }
+    TraversalResponseStatus status = 1;
+    bytes file_bytes = 2;
+}
+
+message ResponseDataRequest {
+    string file_bytes = 1;
+    string request_id = 2;
+    string node_ip = 3;
+    string status = 4;
+    string path = 5;
+}
+
+message ResponseDataResponse {
+    enum TraversalResponseStatus {
+        FOUND = 0;
+        FORWARDED = 1;
+        NOT_FOUND = 2;
+    }
+    TraversalResponseStatus status = 1;
+}
+
+message SendDataRequest {
+    bytes file_bytes = 1;
+    string request_id = 2;
+    string client_node_ip = 3;
+}
+
+message SendDataResponse {
+}

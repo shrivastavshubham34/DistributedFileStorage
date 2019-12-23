@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service NetworkManager {
+    rpc GetNodeMetaData (GetNodeMetaDataRequest) returns (GetNodeMetaDataResponse) {}
+    rpc UpdateNeighborMetaData (UpdateNeighborMetaDataRequest) returns (UpdateNeighborMetaDataResponse) {}
+}
+
+message GetNodeMetaDataRequest {
+    string client_node_ip = 1;
+}
+
+message GetNodeMetaDataResponse {
+    string server_coord_ip_dict = 1;
+}
+
+message UpdateNeighborMetaDataRequest {
+    string client_node_ip = 1;
+    string client_node_coordinates = 2;
+}
+
+message UpdateNeighborMetaDataResponse {
+    string server_node_coordinates = 1;
+}

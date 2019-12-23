@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+service MachineStats {
+    rpc GetCPUUsage (GetCPUUsageRequest) returns (GetCPUUsageResponse);
+    rpc GetMemoryUsage (GetMemoryUsageRequest) returns (GetMemoryUsageResponse);
+    rpc GetDiskUsage (GetDiskUsageRequest) returns (GetDiskUsageResponse);
+}
+
+message GetCPUUsageRequest {
+    string node_ip = 1;
+}
+
+message GetCPUUsageResponse {
+    int32 cpu_usage = 1;
+}
+
+message GetMemoryUsageRequest {
+    string node_ip = 1;
+}
+
+message GetMemoryUsageResponse {
+    int32 memory_usage = 1;
+}
+
+message GetDiskUsageRequest {
+    string node_ip = 1;
+}
+
+message GetDiskUsageResponse {
+    int32 disk_usage = 1;
+}
+

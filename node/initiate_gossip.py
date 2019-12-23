@@ -1,0 +1,2 @@
+from gossip_of_gossip import GossipProtocol
+GossipProtocol()
