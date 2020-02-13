@@ -54,3 +54,6 @@ python3 node/client.py 10.0.0.1
 ```
 python3 node/server.py
 ```
+## License
+
+This project is not licensed and is for hands on experience.
